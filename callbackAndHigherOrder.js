@@ -159,7 +159,7 @@ function each(arr, callback) {
     callback(element, index)
   })
 }
-each(names, callback)
+
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -169,7 +169,9 @@ each(names, callback)
 */
 
 // CODE HERE
-
+each(names, (item, index) => {
+  console.log(`The item at ${index} is ${item}`)
+})
 
 ////////// PROBLEM 7 //////////
 
@@ -203,14 +205,21 @@ var users = [
 
 // CODE HERE 
 
+function getUserById(arr, id, callback) {
+  for (i=0; i < arr.length; i++) {
+    if(arr[i].id === id) {
+      callback(arr[i])
+    }
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+//  getUserById(users, '16t', user => {
+//    console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+//  })
 
 ////////// CHALLENGE //////////
 
@@ -230,6 +239,12 @@ var users = [
 
 // CODE HERE
 
+function addingFactory(num1) {
+  return function(num2) {
+    return num1 + num2
+  }
+}
+
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -244,6 +259,8 @@ var users = [
 
 // CODE HERE
 
+let addTen = addingFactory(10)
+
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -255,6 +272,10 @@ var users = [
 */
 
 // CODE HERE
+
+console.log(addTen(4))
+console.log(addTen(6))
+
 
 /*
   Let's make another function from the addingFactory. 
@@ -268,3 +289,6 @@ var users = [
 */
 
 // CODE HERE
+
+let addNumber = addingFactory(15)
+console.log(addNumber(52))
